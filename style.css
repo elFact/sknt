@@ -1,0 +1,183 @@
+html {
+  font-family: sans-serif;
+  color: #4d575d;
+}
+html a {
+  color: #007aff;
+  text-decoration: none;
+}
+html link:visited {
+  color: #007aff;
+}
+body {
+  margin: 0;
+  background-color: #efeff4;
+}
+.wrapper {
+  display: grid;
+  column-gap: 10px;
+  row-gap: 30px;
+}
+.tarif, 
+.group {
+  background-color: #fff;
+  margin: -1px 0 0 0;
+  border-bottom: 1px solid #c8c7cc;
+  border-top: 1px solid #c8c7cc;
+  box-shadow: 0 0 5px #c8c7cc;
+  transition: 0.3s;
+}
+.tarif:hover, 
+.group:hover {
+  background-color: #f6f6f6;
+  box-shadow: 0 0 15px #9e9ea1;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.tarif__wrapper {
+  padding-left: 20px;
+  position: relative;
+}
+.tarif__name {
+  font-size: 25px;
+  color: #82c12b;
+  padding: 0 0 15px 0;
+  margin-bottom: 10px;
+  font-weight: 400;
+  border-bottom: 1px solid #cbcace;
+}
+.tarif__speed {
+  font-size: 25px;
+  font-weight: bold;
+  color: #fff;
+  display: inline-block;
+  width: max-content;
+  margin: 0 0 0 -20px;
+  padding: 7px 20px;
+  background-color: #82c12b;
+}
+.tarif__speed_earth {
+  background-color: #70603e;
+}
+.tarif__speed_water {
+  background-color: #0075d9;
+}
+.tarif__speed_fire {
+  background-color: #e74807;
+}
+.tarif__speed:after {
+  content: " Мбит/с";
+}
+.tarif__prices {
+  font-size: 28px;
+  margin: 10px 0 15px 0;
+}
+.tarif__prices:after {
+  content: " \20BD/мес";
+}
+.tarif__additional {
+  font-size: 20px;
+  margin: 0;
+}
+.tarif__details {
+  border-top: 1px solid #c8c7cc;
+  padding: 15px 20px 0 0;
+  font-size: 20px;
+  margin: 10px 0 15px 0;
+}
+.arrow {
+  position: absolute;
+  right: 30px;
+  width: 27px; 
+  height: 27px;
+  top: 50%;
+  margin-top: -15px;
+  fill: transparent;
+  stroke: #c8c7cc;
+  stroke-width: 3px;
+  transition: 0.3s;
+}
+.tarif:hover .arrow,
+.group:hover .arrow {
+  stroke-width: 3px;
+  stroke: #a7a6aa;
+  right: 25px;
+  transition: 0.2s
+}
+.group * {
+  margin: 0;
+}
+.tarif-title {
+  color: #000;
+  text-align: center;
+  font-size: 26px;
+}
+.group {
+  background-color: #fff;
+  padding: 20px 0 20px 20px;
+  margin: 25px 0;
+  position: relative;
+}
+.group__period {
+  color: #82c12b;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #c8c7cc;
+  margin-bottom: 15px;
+}
+.group__monthly-price {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.group__monthly-price:after {
+  content: " \20BD/мес";
+}
+.group__full-price {
+  font-size: 20px;
+}
+.group__full-price:after {
+  content: " \20BD";
+}
+.group__discount {
+  font-size: 20px;
+}
+.group__discount:after {
+  content: " \20BD";
+}
+.arrow_group {
+  margin-top: 15px;
+}
+.group-wrapper {
+  width: 100%;
+}
+
+@media only screen and (min-width: 640px){
+  main {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+  .wrapper {
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
+  }
+  .tarif {
+    max-width: 440px;
+  }
+  .tarif__wrapper {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+  }
+  .tarif__prices {
+    flex-grow: 1;
+  }
+  .group-wrapper {
+    width: 600px;
+  }
+}
+@media only screen and (min-width: 1024px){
+  .wrapper {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
