@@ -8,15 +8,6 @@
 </head>
 <body>
   <main class="content" id="tarifs">
-    <template v-if="show === 'groups'">
-      <?php
-        require('json.php');
-        renderGroups();
-      ?>
-    </template>
-    <template v-if="show === 'group'">
-      <div v-html="content"></div>
-    </template>
   </main>
   <script src="vue.js"></script>
   <script src="axios.min.js"></script>
