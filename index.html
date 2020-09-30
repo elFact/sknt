@@ -8,20 +8,42 @@
 </head>
 <body>
   <main class="content" id="tarifs">
-    <div class="wrapper">
-      <section class="tarif" v-for="group in content">
-        <div class="tarif__wrapper">
-          <h2 class="tarif__name"> {{ group["Group title"] }} </h2>
-          <p class="tarif__speed" v-bind:class="speedCheck(group['Group title'])"> {{ group["Group speed"] }} </p>
-          <p class="tarif__prices"> {{ group["Group price"] }} </p>
-          <p class="tarif__additional" v-for="option in group['Group free']"> {{ option }} </p>
-          <svg class="arrow">
-            <polyline points="12,0 25,12 12,25"/>
-          </svg>
-          <p class="tarif__details"><a v-bind:href="group['Group link']" title='Перейти на сайт'>узнать подробнее на сайте www.sknt.ru</a></p>
-        </div>
-      </section>
-    </div>
+    <template v-if="show == 'groups'">
+      <div class="wrapper">
+        <section class="tarif" v-for="(group, index) in content" @click="showGroup(index)">
+          <div class="tarif__wrapper">
+            <h2 class="tarif__name"> {{ group["Group title"] }} </h2>
+            <p class="tarif__speed" v-bind:class="speedCheck(group['Group title'])"> {{ group["Group speed"] }} </p>
+            <p class="tarif__prices"> {{ group["Group price"] }} </p>
+            <p class="tarif__additional" v-for="option in group['Group free']"> {{ option }} </p>
+            <svg class="arrow arrow_group">
+              <polyline points="12,0 25,12 12,25"/>
+            </svg>
+            <p class="tarif__details"><a v-bind:href="group['Group link']" title='Перейти на сайт'>узнать подробнее на сайте www.sknt.ru</a></p>
+          </div>
+        </section>
+      </div>
+    </template>
+    <template v-if="show == 'group'">
+      <div class="group-wrapper">
+        <!-- <button @click="showGroups">назад</button> -->
+        <h1 class="tarif-title" @click="showGroups"> Тариф "{{ this.tarifTitle }}" </h1>
+        <template v-for="(tarif, index) in content">
+          <section class="group" @click="showTarif(groupNum, index-1)">
+            <h2 class="group__period"> {{ tarif["Tarif period"] }} </h2>
+            <p class="group__monthly-price"> {{ tarif["Tarif price"] }} </p>
+            <p class="group__full-price">разовый платеж – {{ tarif["Full price"] }} </p>
+            <svg class="arrow arrow_tarif">
+              <polyline points="12,0 25,12 12,25"/>
+            </svg>
+            <p v-if="tarif['Tarif discount'] > 0" class="group__discount">скидка {{ tarif["Tarif discount"] }} </p>
+          </section>
+        </template>
+      </div>
+    </template>
+    <template v-if="show == 'tarif'">
+      <p> период {{ content["Period"] }}</p>
+    </template>
   </main>
   <script src="vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

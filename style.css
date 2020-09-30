@@ -19,7 +19,8 @@ body {
   row-gap: 30px;
 }
 .tarif, 
-.group {
+.group,
+.tarif-title{
   background-color: #fff;
   margin: -1px 0 0 0;
   border-bottom: 1px solid #c8c7cc;
@@ -28,7 +29,8 @@ body {
   transition: 0.3s;
 }
 .tarif:hover, 
-.group:hover {
+.group:hover,
+.tarif-title:hover {
   background-color: #f6f6f6;
   box-shadow: 0 0 15px #9e9ea1;
   transition: 0.2s;
@@ -85,32 +87,40 @@ body {
   font-size: 20px;
   margin: 10px 0 15px 0;
 }
+.group * {
+  margin: 0;
+}
 .arrow {
   position: absolute;
   right: 30px;
   width: 27px; 
   height: 27px;
-  top: 50%;
-  margin-top: -15px;
   fill: transparent;
   stroke: #c8c7cc;
   stroke-width: 3px;
   transition: 0.3s;
+  display: block;
+}
+.arrow_group {
+  top: 50%;
+  margin-top: -10px;
+}
+.arrow_tarif {
+  top: 50%;
+  margin-top: 15px;
 }
 .tarif:hover .arrow,
 .group:hover .arrow {
-  stroke-width: 3px;
   stroke: #a7a6aa;
   right: 25px;
   transition: 0.2s
-}
-.group * {
-  margin: 0;
 }
 .tarif-title {
   color: #000;
   text-align: center;
   font-size: 26px;
+  padding: 15px 0;
+  margin-bottom: 40px;
 }
 .group {
   background-color: #fff;
@@ -144,9 +154,6 @@ body {
 .group__discount:after {
   content: " \20BD";
 }
-.arrow_group {
-  margin-top: 15px;
-}
 .group-wrapper {
   width: 100%;
 }
@@ -174,6 +181,9 @@ body {
   }
   .group-wrapper {
     width: 600px;
+  }
+  .tarif-title {
+    margin-top: 10px;
   }
 }
 @media only screen and (min-width: 1024px){
