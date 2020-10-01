@@ -12,7 +12,7 @@
       <div class="wrapper">
         <section class="tarif" v-for="(group, index) in content" @click="showGroup(index)">
           <div class="tarif__wrapper">
-            <h2 class="tarif__name"> {{ group["Group title"] }} </h2>
+            <h2 class="section-title"> {{ group["Group title"] }} </h2>
             <p class="tarif__speed" v-bind:class="speedCheck(group['Group title'])"> {{ group["Group speed"] }} </p>
             <p class="tarif__prices"> {{ group["Group price"] }} </p>
             <p class="tarif__additional" v-for="option in group['Group free']"> {{ option }} </p>
@@ -26,11 +26,10 @@
     </template>
     <template v-if="show == 'group'">
       <div class="group-wrapper">
-        <!-- <button @click="showGroups">назад</button> -->
-        <h1 class="tarif-title" @click="showGroups"> Тариф "{{ this.tarifTitle }}" </h1>
+        <h1 class="content-title" @click="showGroups"> Тариф "{{ this.tarifTitle }}" </h1>
         <template v-for="(tarif, index) in content">
           <section class="group" @click="showTarif(groupNum, index-1)">
-            <h2 class="group__period"> {{ tarif["Tarif period"] }} </h2>
+            <h2 class="section-title"> {{ tarif["Tarif period"] }} </h2>
             <p class="group__monthly-price"> {{ tarif["Tarif price"] }} </p>
             <p class="group__full-price">разовый платеж – {{ tarif["Full price"] }} </p>
             <svg class="arrow arrow_tarif">
@@ -42,7 +41,18 @@
       </div>
     </template>
     <template v-if="show == 'tarif'">
-      <p> период {{ content["Period"] }}</p>
+      <div class="tarif-wrapper">
+        <h1 class="content-title"  @click="showGroup(groupNum)">Выбор тарифа</h1>
+        <section class="select-tarif">
+          <h2 class="section-title"> {{ content["Title"] }} </h2>
+          <p>Период оплаты – {{ content["Period"] }}</p>
+          <p> {{ content["Price per month"] }} </p>
+          <p>разовый платеж – {{ content["Price"] }} </p>
+          <p>со счета спишется – {{ content["Price"] }} </p>
+          <p>вступит в силу – сегодня</p>
+          <p>активно до – дд.мм.гггг</p>
+        </section>
+      </div>
     </template>
   </main>
   <script src="vue.js"></script>

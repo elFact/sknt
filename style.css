@@ -20,7 +20,7 @@ body {
 }
 .tarif, 
 .group,
-.tarif-title{
+.content-title{
   background-color: #fff;
   margin: -1px 0 0 0;
   border-bottom: 1px solid #c8c7cc;
@@ -28,9 +28,16 @@ body {
   box-shadow: 0 0 5px #c8c7cc;
   transition: 0.3s;
 }
+.content-title {
+  color: #000;
+  text-align: center;
+  font-size: 26px;
+  padding: 15px 0;
+  margin-bottom: 40px;
+}
 .tarif:hover, 
 .group:hover,
-.tarif-title:hover {
+.content-title:hover {
   background-color: #f6f6f6;
   box-shadow: 0 0 15px #9e9ea1;
   transition: 0.2s;
@@ -39,14 +46,6 @@ body {
 .tarif__wrapper {
   padding-left: 20px;
   position: relative;
-}
-.tarif__name {
-  font-size: 25px;
-  color: #82c12b;
-  padding: 0 0 15px 0;
-  margin-bottom: 10px;
-  font-weight: 400;
-  border-bottom: 1px solid #cbcace;
 }
 .tarif__speed {
   font-size: 25px;
@@ -115,20 +114,15 @@ body {
   right: 25px;
   transition: 0.2s
 }
-.tarif-title {
-  color: #000;
-  text-align: center;
-  font-size: 26px;
-  padding: 15px 0;
-  margin-bottom: 40px;
-}
 .group {
   background-color: #fff;
   padding: 20px 0 20px 20px;
   margin: 25px 0;
   position: relative;
 }
-.group__period {
+.section-title {
+  font-size: 25px;
+  font-weight: 400;
   color: #82c12b;
   padding-bottom: 15px;
   border-bottom: 1px solid #c8c7cc;
@@ -154,8 +148,17 @@ body {
 .group__discount:after {
   content: " \20BD";
 }
-.group-wrapper {
+.group-wrapper,
+.tarif-wrapper {
   width: 100%;
+}
+.select-tarif * {
+  margin: 0;
+  padding: 0;
+}
+.select-tarif {
+  background-color: #fff;
+  padding: 20px 0 0 20px;
 }
 
 @media only screen and (min-width: 640px){
@@ -179,10 +182,11 @@ body {
   .tarif__prices {
     flex-grow: 1;
   }
-  .group-wrapper {
+  .group-wrapper,
+  .tarif-wrapper {
     width: 600px;
   }
-  .tarif-title {
+  .content-title {
     margin-top: 10px;
   }
 }

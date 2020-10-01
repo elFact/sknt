@@ -63,6 +63,7 @@
 
   function getTarifData($groupNumber, $tarifNum) {
     global $tarifsJson;
+    $tarifData["Title"] = $tarifsJson["tarifs"][$groupNumber]["title"];
     $tarifData["Period"] = $tarifsJson["tarifs"][$groupNumber]["tarifs"][$tarifNum]["pay_period"];
     $tarifData["Price"] = $tarifsJson["tarifs"][$groupNumber]["tarifs"][$tarifNum]["price"];
     $tarifData["Price per month"] = $tarifData["Price"] / $tarifData["Period"];
