@@ -44,13 +44,14 @@
       <div class="tarif-wrapper">
         <h1 class="content-title"  @click="showGroup(groupNum)">Выбор тарифа</h1>
         <section class="select-tarif">
-          <h2 class="section-title"> {{ content["Title"] }} </h2>
-          <p>Период оплаты – {{ content["Period"] }}</p>
-          <p> {{ content["Price per month"] }} </p>
-          <p>разовый платеж – {{ content["Price"] }} </p>
-          <p>со счета спишется – {{ content["Price"] }} </p>
-          <p>вступит в силу – сегодня</p>
-          <p>активно до – дд.мм.гггг</p>
+          <h2 class="section-title">Тариф "{{ content["Title"] }}" </h2>
+          <p class="select-tarif__period">Период оплаты – {{ content["Period"] }}</p>
+          <p class="select-tarif__price"> {{ content["Price per month"] }} </p>
+          <p class="select-tarif__full-price">разовый платеж – {{ content["Price"] }} </p>
+          <p class="select-tarif__pay-out">со счета спишется – {{ content["Price"] }} </p>
+          <p class="select-tarif__day">вступит в силу – сегодня</p>
+          <p class="select-tarif__new-day">активно до – дд.мм.гггг</p>
+          <button class="select-tarif__btn">Выбрать</button>
         </section>
       </div>
     </template>

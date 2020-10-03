@@ -2,13 +2,14 @@
   $json = file_get_contents("data.json");
   $tarifsJson = json_decode( $json, true);
 
-  if ($_GET["view"] == "groups") {
+  if (isset($_GET["view"]) && $_GET["view"] == "groups") {
     getGroupsData();
-  } elseif ($_GET["view"] == "group" && isset($_GET["group"])) {
+  } elseif (isset($_GET["view"]) && $_GET["view"] == "group" && isset($_GET["group"])) {
     getGroupData($_GET["group"]);
   } elseif (isset($_GET["groupNum"]) && isset($_GET["tarifNum"])) {
     getTarifData($_GET["groupNum"], $_GET["tarifNum"]);
   }
+  
   function getGroupsData() {
     global $tarifsJson;
     $groupsData = [];

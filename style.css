@@ -120,33 +120,32 @@ body {
   margin: 25px 0;
   position: relative;
 }
-.section-title {
-  font-size: 25px;
-  font-weight: 400;
-  color: #82c12b;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #c8c7cc;
-  margin-bottom: 15px;
-}
-.group__monthly-price {
+.group__monthly-price,
+.select-tarif__period, 
+.select-tarif__price {
   font-size: 25px;
   font-weight: bold;
   margin-bottom: 15px;
 }
-.group__monthly-price:after {
+.group__monthly-price:after,
+.select-tarif__price:after {
   content: " \20BD/мес";
 }
-.group__full-price {
+.group__full-price,
+.select-tarif__full-price,
+.select-tarif__day,
+.select-tarif__new-day,
+.select-tarif__pay-out {
   font-size: 20px;
 }
-.group__full-price:after {
+.group__full-price:after,
+.group__discount:after,
+.select-tarif__full-price:after,
+.select-tarif__pay-out:after {
   content: " \20BD";
 }
 .group__discount {
   font-size: 20px;
-}
-.group__discount:after {
-  content: " \20BD";
 }
 .group-wrapper,
 .tarif-wrapper {
@@ -158,9 +157,52 @@ body {
 }
 .select-tarif {
   background-color: #fff;
-  padding: 20px 0 0 20px;
+  padding: 20px 0 10px 20px;
+  border-bottom: 1px solid #c8c7cc;
+  border-top: 1px solid #c8c7cc;
+  box-shadow: 0 0 5px #c8c7cc;
 }
-
+.select-tarif__period {
+}
+.select-tarif__price {
+  margin-bottom: 15px;
+}
+.select-tarif__full-price {
+}
+.select-tarif__pay-out{
+  margin-bottom: 20px;
+}
+.select-tarif__day {
+  color: #aaa;
+}
+.select-tarif__new-day {
+  color: #aaa;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #c8c7cc;
+  margin-bottom: 10px;
+}
+.select-tarif__btn {
+  color: #fff;
+  font-size: 30px;
+  background-color: #82c12b;
+  width: 96.5%;
+  height: 60px;
+  outline: none;
+  border: none;
+  transition: 0.2s;
+}
+.select-tarif__btn:hover {
+  background-color: #74ac26;
+  transition: 0.2s;
+}
+.section-title {
+  font-size: 30px;
+  font-weight: 400;
+  color: #82c12b;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #c8c7cc;
+  margin-bottom: 15px;
+}
 @media only screen and (min-width: 640px){
   main {
     margin: 0;
