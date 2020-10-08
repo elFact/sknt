@@ -64,10 +64,12 @@
 
   function getTarifData($groupNumber, $tarifNum) {
     global $tarifsJson;
+    $timestamp = explode('+',$tarifsJson["tarifs"][$groupNumber]["tarifs"][$tarifNum]["new_payday"]);
     $tarifData["Title"] = $tarifsJson["tarifs"][$groupNumber]["title"];
     $tarifData["Period"] = $tarifsJson["tarifs"][$groupNumber]["tarifs"][$tarifNum]["pay_period"];
     $tarifData["Price"] = $tarifsJson["tarifs"][$groupNumber]["tarifs"][$tarifNum]["price"];
     $tarifData["Price per month"] = $tarifData["Price"] / $tarifData["Period"];
+    $tarifData["New day"] = date('d.m.o', $timestamp[0]);
     $data = json_encode($tarifData, JSON_UNESCAPED_UNICODE);
     print_r($data);
   };

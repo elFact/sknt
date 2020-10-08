@@ -2,238 +2,212 @@ html {
   font-family: sans-serif;
   color: #4d575d;
 }
-html a {
-  color: #007aff;
-  text-decoration: none;
-}
-html link:visited {
-  color: #007aff;
-}
 body {
   margin: 0;
   background-color: #efeff4;
 }
-.wrapper {
+.content {
+  margin-top: -1px;
+}
+.tarifs-wrapper {
   display: grid;
   column-gap: 10px;
   row-gap: 30px;
 }
-.tarif, 
-.group,
-.content-title{
+.tarif,
+.group-header {
   background-color: #fff;
-  margin: -1px 0 0 0;
   border-bottom: 1px solid #c8c7cc;
   border-top: 1px solid #c8c7cc;
   box-shadow: 0 0 5px #c8c7cc;
   transition: 0.3s;
+  padding-left: 20px;
 }
-.content-title {
-  color: #000;
-  text-align: center;
-  font-size: 26px;
-  padding: 15px 0;
-  margin-bottom: 40px;
-}
-.tarif:hover, 
-.group:hover,
-.content-title:hover {
+.tarif:hover,
+.tarif:focus {
   background-color: #f6f6f6;
   box-shadow: 0 0 15px #9e9ea1;
   transition: 0.2s;
   cursor: pointer;
+  outline: none;
 }
-.tarif__wrapper {
-  padding-left: 20px;
+.tarif:hover .arrow-forward,
+.tarif:focus .arrow-forward{
+  stroke: #a4a2a9;
+  right: 15px;
+  transition: 0.2s;
+}
+.tarif-wrapper {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+.tarif__header {
+  padding: 15px 0;
+}
+.tarif__name {
+  font-size: 27px;
+  font-weight: 400;
+  color: #82c12b;
+  margin: 0;
+}
+.tarif__info {
+  flex-grow: 1;
+  border-top: 1px solid #c8c7cc;
+  border-bottom: 1px solid #c8c7cc;
+  padding: 10px 0;
   position: relative;
+}
+.arrow-forward {
+  fill: transparent;
+  stroke-width: 3px;
+  stroke: #bcb9c2;
+  position: absolute;
+  top: 50%;
+  margin-top: -13px;
+  right: 25px;
+  transition: 0.2s;
+}
+.tarif__info_border-bottom-off {
+  border-bottom: none;
 }
 .tarif__speed {
   font-size: 25px;
   font-weight: bold;
   color: #fff;
-  display: inline-block;
   width: max-content;
   margin: 0 0 0 -20px;
-  padding: 7px 20px;
+  padding: 7px 10px 7px 20px;
   background-color: #82c12b;
 }
-.tarif__speed_earth {
+.tarif__speed_color-earth {
   background-color: #70603e;
 }
-.tarif__speed_water {
+.tarif__speed_color-water {
   background-color: #0075d9;
 }
-.tarif__speed_fire {
+.tarif__speed_color-fire {
   background-color: #e74807;
 }
-.tarif__speed:after {
+.tarif__speed::after {
   content: " Мбит/с";
 }
-.tarif__prices {
+.tarif__price,
+.tarif__period {
   font-size: 28px;
   margin: 10px 0 15px 0;
 }
-.tarif__prices:after {
+.tarif__price::after,
+.tarif__monthly-price::after {
   content: " \20BD/мес";
 }
-.tarif__additional {
+.tarif__item {
   font-size: 20px;
   margin: 0;
 }
-.tarif__details {
-  border-top: 1px solid #c8c7cc;
-  padding: 15px 20px 0 0;
-  font-size: 20px;
-  margin: 10px 0 15px 0;
+.tarif__item_color_gray {
+  color: #acabaf;
 }
-.group * {
-  margin: 0;
-}
-.arrow {
-  position: absolute;
-  right: 30px;
-  width: 27px; 
-  height: 27px;
-  fill: transparent;
-  stroke: #c8c7cc;
-  stroke-width: 3px;
-  transition: 0.3s;
-  display: block;
-}
-.arrow_group {
-  top: 50%;
-  margin-top: -10px;
-}
-.arrow_tarif {
-  top: 50%;
-  margin-top: 15px;
-}
-.tarif:hover .arrow,
-.group:hover .arrow {
-  stroke: #a7a6aa;
-  right: 25px;
-  transition: 0.2s
-}
-.group {
-  background-color: #fff;
-  padding: 20px 0 20px 20px;
-  margin: 25px 0;
-  position: relative;
-}
-.group__monthly-price,
-.select-tarif__period, 
-.select-tarif__price {
-  font-size: 25px;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-.group__monthly-price:after,
-.select-tarif__price:after {
-  content: " \20BD/мес";
-}
-.group__full-price,
-.select-tarif__full-price,
-.select-tarif__day,
-.select-tarif__new-day,
-.select-tarif__pay-out {
-  font-size: 20px;
-}
-.group__full-price:after,
-.group__discount:after,
-.select-tarif__full-price:after,
-.select-tarif__pay-out:after {
+.tarif__item_rub::after {
   content: " \20BD";
 }
-.group__discount {
+.tarif__footer {
+  padding-right: 20px;
+}
+.tarif__link {
+  color: #007aff;
+  text-decoration: none;
   font-size: 20px;
+  display: inline-block;
+  outline: none;
+  margin: 20px 0 20px 0;
 }
-.group-wrapper,
-.tarif-wrapper {
-  width: 100%;
+.tarif__link:visited {
+  color: #007aff;
 }
-.select-tarif * {
-  margin: 0;
-  padding: 0;
+.tarif__link:focus,
+.tarif__link:hover {
+  text-decoration: underline;
 }
-.select-tarif {
-  background-color: #fff;
-  padding: 20px 0 10px 20px;
-  border-bottom: 1px solid #c8c7cc;
-  border-top: 1px solid #c8c7cc;
-  box-shadow: 0 0 5px #c8c7cc;
+.group-wrapper {
+  min-width: 540px;
 }
-.select-tarif__period {
+.group-tarif-wrapper {
+  margin: 20px 0;
 }
-.select-tarif__price {
+.group-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 0 10px;
+  margin-bottom: 40px;
+}
+.tarif__pay-once {
   margin-bottom: 15px;
 }
-.select-tarif__full-price {
+.tarif__pay-period {
+  font-size: 28px;
+  margin: 0;
 }
-.select-tarif__pay-out{
-  margin-bottom: 20px;
+.tarif__monthly-price {
+  font-size: 28px;
+  margin: 0 0 15px 0;
 }
-.select-tarif__day {
-  color: #aaa;
+.group-header__title {
+  flex-grow: 1;
+  color: #000;
+  font-size: 27px;
 }
-.select-tarif__new-day {
-  color: #aaa;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #c8c7cc;
-  margin-bottom: 10px;
+.arrow-back {
+  position: relative;
+  fill: transparent;
+  stroke-width: 6px;
+  stroke: #82c12b;
+  left: 0px;
+  transition: 0.2s;
+  cursor: pointer;
 }
-.select-tarif__btn {
-  color: #fff;
-  font-size: 30px;
-  background-color: #82c12b;
-  width: 96.5%;
-  height: 60px;
+.arrow-back:hover,
+.arrow-back:focus {
+  left: -5px;
+  stroke: #669622;
   outline: none;
+  transition: 0.2s;
+}
+.tarif__select-btn {
+  background-color: #82c12b;
+  color: #fff;
+  width: 100%;
+  margin: 5px 20px 10px 0;
+  height: 60px;
+  font-size: 25px;
   border: none;
   transition: 0.2s;
 }
-.select-tarif__btn:hover {
-  background-color: #74ac26;
+.tarif__select-btn:hover {
+  background-color: #78b127;
   transition: 0.2s;
 }
-.section-title {
-  font-size: 30px;
-  font-weight: 400;
-  color: #82c12b;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #c8c7cc;
-  margin-bottom: 15px;
+.tarif__select-btn:focus {
+  outline-color: #4f761a;
 }
 @media only screen and (min-width: 640px){
-  main {
+  .content {
     margin: 0;
     display: flex;
     justify-content: center;
   }
-  .wrapper {
+  .tarifs-wrapper {
     grid-template-columns: 1fr 1fr;
     padding: 10px;
   }
-  .tarif {
-    max-width: 440px;
-  }
-  .tarif__wrapper {
-    display: flex;
-    flex-flow: column;
-    height: 100%;
-  }
-  .tarif__prices {
-    flex-grow: 1;
-  }
-  .group-wrapper,
-  .tarif-wrapper {
-    width: 600px;
-  }
-  .content-title {
-    margin-top: 10px;
+  .group-wrapper {
+    padding: 10px;
   }
 }
 @media only screen and (min-width: 1024px){
-  .wrapper {
+  .tarifs-wrapper {
     grid-template-columns: 1fr 1fr 1fr;
   }
-}
+} 

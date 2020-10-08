@@ -1,5 +1,5 @@
 let mainPage = new Vue({
-  el: '#tarifs',
+  el: '#content',
   data: {
     content: '',
     show: '',
@@ -8,9 +8,9 @@ let mainPage = new Vue({
   },
   methods: {
     speedCheck(title) {
-      if (title.includes('Земля')) return 'tarif__speed_earth';
-      if (title.includes('Вода')) return 'tarif__speed_water';
-      if (title.includes('Огонь')) return 'tarif__speed_fire';
+      if (title.includes('Земля')) return 'tarif__speed_color-earth';
+      if (title.includes('Вода')) return 'tarif__speed_color-water';
+      if (title.includes('Огонь')) return 'tarif__speed_color-fire';
     },
     showGroup(groupNumber) {
       axios

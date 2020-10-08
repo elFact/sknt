@@ -7,52 +7,80 @@
   <title>Тарифы</title>
 </head>
 <body>
-  <main class="content" id="tarifs">
-    <template v-if="show == 'groups'">
-      <div class="wrapper">
-        <section class="tarif" v-for="(group, index) in content" @click="showGroup(index)">
-          <div class="tarif__wrapper">
-            <h2 class="section-title"> {{ group["Group title"] }} </h2>
-            <p class="tarif__speed" v-bind:class="speedCheck(group['Group title'])"> {{ group["Group speed"] }} </p>
-            <p class="tarif__prices"> {{ group["Group price"] }} </p>
-            <p class="tarif__additional" v-for="option in group['Group free']"> {{ option }} </p>
-            <svg class="arrow arrow_group">
-              <polyline points="12,0 25,12 12,25"/>
-            </svg>
-            <p class="tarif__details"><a v-bind:href="group['Group link']" title='Перейти на сайт'>узнать подробнее на сайте www.sknt.ru</a></p>
+  <main class="content" id="content">
+    <template  v-if="show == 'groups'">
+      <div class="tarifs-wrapper">
+        <div class="tarif" tabindex="0" v-for="(group, index) in content" @keyup.enter.self="showGroup(index)">
+          <div class="tarif-wrapper">
+            <div class="tarif__header"  @click="showGroup(index)">
+              <h2 class="tarif__name">Тариф "{{ group["Group title"] }}" </h2>
+            </div>
+            <div class="tarif__info"  @click="showGroup(index)">
+              <p class="tarif__speed" v-bind:class="speedCheck(group['Group title'])"> {{ group["Group speed"] }} </p>
+              <p class="tarif__price"> {{ group["Group price"] }} </p>
+              <p class="tarif__item" v-for="option in group['Group free']"> {{ option }} </p>
+              <svg class="arrow-forward"  width="18" height="32">
+                <polyline points="3,3 15,16 3,29"/>
+              </svg>
+            </div>
+            <div class="tarif__footer">
+              <a class="tarif__link" v-bind:href="group['Group link']" title='Перейти на сайт'>узнать подробнее на сайте www.sknt.ru</a>
+            </div>
           </div>
-        </section>
+        </div>
       </div>
     </template>
     <template v-if="show == 'group'">
       <div class="group-wrapper">
-        <h1 class="content-title" @click="showGroups"> Тариф "{{ this.tarifTitle }}" </h1>
+        <div class="group-header">
+          <svg class="arrow-back" width="30" height="46" tabindex="0"  @click="showGroups" @keyup.enter="showGroups">
+            <polyline points="25,5 5,22 25,41"/>
+          </svg>
+          <h1 class="group-header__title"> Тариф "{{ this.tarifTitle }}" </h1>
+        </div>
         <template v-for="(tarif, index) in content">
-          <section class="group" @click="showTarif(groupNum, index-1)">
-            <h2 class="section-title"> {{ tarif["Tarif period"] }} </h2>
-            <p class="group__monthly-price"> {{ tarif["Tarif price"] }} </p>
-            <p class="group__full-price">разовый платеж – {{ tarif["Full price"] }} </p>
-            <svg class="arrow arrow_tarif">
-              <polyline points="12,0 25,12 12,25"/>
-            </svg>
-            <p v-if="tarif['Tarif discount'] > 0" class="group__discount">скидка {{ tarif["Tarif discount"] }} </p>
-          </section>
+          <div class="group-tarif-wrapper">
+            <div class="tarif" tabindex="0" @click="showTarif(groupNum, index-1)" @keyup.enter="showTarif(groupNum, index-1)">
+              <div class="tarif__header">
+                <h2 class="tarif__name"> {{ tarif["Tarif period"] }} </h2>
+              </div>
+              <div class="tarif__info tarif__info_border-bottom-off">
+                <p class="tarif__price"> {{ tarif["Tarif price"] }} </p>
+                <p class="tarif__item tarif__item_rub">разовый платеж – {{ tarif["Full price"] }} </p>
+                <p v-if="tarif['Tarif discount'] > 0" class="tarif__item tarif__item_rub">скидка – {{ tarif["Tarif discount"] }} </p>
+                <svg class="arrow-forward"  width="18" height="32">
+                  <polyline points="3,3 15,16 3,29"/>
+                </svg>
+              </div>
+            </div>
+          </div>
         </template>
       </div>
     </template>
     <template v-if="show == 'tarif'">
-      <div class="tarif-wrapper">
-        <h1 class="content-title"  @click="showGroup(groupNum)">Выбор тарифа</h1>
-        <section class="select-tarif">
-          <h2 class="section-title">Тариф "{{ content["Title"] }}" </h2>
-          <p class="select-tarif__period">Период оплаты – {{ content["Period"] }}</p>
-          <p class="select-tarif__price"> {{ content["Price per month"] }} </p>
-          <p class="select-tarif__full-price">разовый платеж – {{ content["Price"] }} </p>
-          <p class="select-tarif__pay-out">со счета спишется – {{ content["Price"] }} </p>
-          <p class="select-tarif__day">вступит в силу – сегодня</p>
-          <p class="select-tarif__new-day">активно до – дд.мм.гггг</p>
-          <button class="select-tarif__btn">Выбрать</button>
-        </section>
+      <div class="group-wrapper">
+        <div class="group-header">
+          <svg class="arrow-back" width="30" height="46" tabindex="0"  @click="showGroup(groupNum)" @keyup.enter="showGroup(groupNum)">
+            <polyline points="25,5 5,22 25,41"/>
+          </svg>
+          <h1 class="group-header__title">Выбор тарифа</h1>
+        </div>
+        <div class="tarif">
+          <div class="tarif__header">
+            <h2 class="tarif__name">Тариф "{{ content["Title"] }}" </h2>
+          </div>
+          <div class="tarif__info">
+            <p class="tarif__pay-period">Период оплаты – {{ content["Period"] }}</p>
+            <p class="tarif__monthly-price"> {{ content["Price per month"] }} </p>
+            <p class="tarif__item tarif__item_rub">разовый платеж – {{ content["Price"] }} </p>
+            <p class="tarif__item tarif__item_rub tarif__pay-once">со счета спишется – {{ content["Price"] }} </p>
+            <p class="tarif__item tarif__item_color_gray">вступит в силу – сегодня</p>
+            <p class="tarif__item tarif__item_color_gray">активно до – {{ content["New day"] }}</p>
+          </div>
+          <div class="tarif__footer">
+            <button class="tarif__select-btn">Выбрать</button>
+          </div>
+        </div>
       </div>
     </template>
   </main>
