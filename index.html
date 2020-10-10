@@ -40,9 +40,9 @@
         </div>
         <template v-for="(tarif, index) in content">
           <div class="group-tarif-wrapper">
-            <div class="tarif" tabindex="0" @click="showTarif(groupNum, index-1)" @keyup.enter="showTarif(groupNum, index-1)">
+            <div class="tarif" tabindex="0" @click="showTarif(index)" @keyup.enter="showTarif(groupNum, index)">
               <div class="tarif__header">
-                <h2 class="tarif__name"> {{ tarif["Tarif period"] }} </h2>
+                <h2 class="tarif__name"> {{ getPeriodName(tarif["Tarif period"]) }} </h2>
               </div>
               <div class="tarif__info tarif__info_border-bottom-off">
                 <p class="tarif__price"> {{ tarif["Tarif price"] }} </p>
@@ -65,17 +65,17 @@
           </svg>
           <h1 class="group-header__title">Выбор тарифа</h1>
         </div>
-        <div class="tarif">
+        <div class="tarif_unfocused">
           <div class="tarif__header">
-            <h2 class="tarif__name">Тариф "{{ content["Title"] }}" </h2>
+            <h2 class="tarif__name">Тариф "{{ tarifTitle }}" </h2>
           </div>
           <div class="tarif__info">
-            <p class="tarif__pay-period">Период оплаты – {{ content["Period"] }}</p>
-            <p class="tarif__monthly-price"> {{ content["Price per month"] }} </p>
-            <p class="tarif__item tarif__item_rub">разовый платеж – {{ content["Price"] }} </p>
-            <p class="tarif__item tarif__item_rub tarif__pay-once">со счета спишется – {{ content["Price"] }} </p>
+            <p class="tarif__pay-period">Период оплаты – {{ getPeriodName(content["Tarif period"]) }}</p>
+            <p class="tarif__monthly-price"> {{ content["Tarif price"] }} </p>
+            <p class="tarif__item tarif__item_rub">разовый платеж – {{ content["Full price"] }} </p>
+            <p class="tarif__item tarif__item_rub tarif__pay-once">со счета спишется – {{ content["Full price"] }} </p>
             <p class="tarif__item tarif__item_color_gray">вступит в силу – сегодня</p>
-            <p class="tarif__item tarif__item_color_gray">активно до – {{ content["New day"] }}</p>
+            <p class="tarif__item tarif__item_color_gray">активно до – {{ getDate(content["New day"]) }}</p>
           </div>
           <div class="tarif__footer">
             <button class="tarif__select-btn">Выбрать</button>
@@ -84,7 +84,7 @@
       </div>
     </template>
   </main>
-  <script src="vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="script.js"></script>
 </body>

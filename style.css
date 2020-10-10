@@ -15,7 +15,8 @@ body {
   row-gap: 30px;
 }
 .tarif,
-.group-header {
+.group-header,
+.tarif_unfocused {
   background-color: #fff;
   border-bottom: 1px solid #c8c7cc;
   border-top: 1px solid #c8c7cc;
@@ -120,7 +121,7 @@ body {
   font-size: 20px;
   display: inline-block;
   outline: none;
-  margin: 20px 0 20px 0;
+  padding: 20px 0 20px 0;
 }
 .tarif__link:visited {
   color: #007aff;
@@ -187,10 +188,13 @@ body {
 }
 .tarif__select-btn:hover {
   background-color: #78b127;
+  cursor: pointer;
   transition: 0.2s;
 }
 .tarif__select-btn:focus {
   outline-color: #4f761a;
+  background-color: #78b127;
+  transition: 0.2s;
 }
 @media only screen and (min-width: 640px){
   .content {

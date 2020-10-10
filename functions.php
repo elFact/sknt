@@ -1,13 +1,11 @@
 <?php
-  $json = file_get_contents("data.json");
+  $json = file_get_contents("http://sknt.ru/job/frontend/data.json");
   $tarifsJson = json_decode( $json, true);
 
   if (isset($_GET["view"]) && $_GET["view"] == "groups") {
     getGroupsData();
   } elseif (isset($_GET["view"]) && $_GET["view"] == "group" && isset($_GET["group"])) {
     getGroupData($_GET["group"]);
-  } elseif (isset($_GET["groupNum"]) && isset($_GET["tarifNum"])) {
-    getTarifData($_GET["groupNum"], $_GET["tarifNum"]);
   }
   
   function getGroupsData() {
@@ -48,29 +46,22 @@
     $maxPerMonth = min($prices);
     foreach($tarifsJson["tarifs"][$groupNumber]["tarifs"] as $tarif) {
       $pricePerMonth = $tarif["price"] / $tarif["pay_period"];
-      $groupData[$j]["Tarif period"] = ($tarif["title"] == $tarifsJson["tarifs"][$groupNumber]["title"]) ? '1 месяц'
-      : str_replace(['(',')', $tarifsJson["tarifs"][$groupNumber]["title"]],'',$tarif["title"]);
+      $groupData[$j]["Tarif period"] = $tarif["pay_period"];
       $groupData[$j]["Tarif price"] = $pricePerMonth;
       $groupData[$j]["Full price"] = $tarif["price"];
+      $groupData[$j]["New day"] = $tarif["new_payday"];
       if ($pricePerMonth < $tarif["price"]) {
         $groupData[$j]["Tarif discount"] = ($maxPerMonth - $pricePerMonth) * $tarif["pay_period"];
       }
       $j++;
     }
-    // $data = json_encode($tarifData);
+    function sortArray($a, $b) {
+      if(isset($a["Tarif period"])) {
+      return $a["Tarif period"] - $b["Tarif period"];
+      }
+    }
+    usort($groupData, "sortArray");
     $data = json_encode($groupData, JSON_UNESCAPED_UNICODE);
-    print_r($data);
-  };
-
-  function getTarifData($groupNumber, $tarifNum) {
-    global $tarifsJson;
-    $timestamp = explode('+',$tarifsJson["tarifs"][$groupNumber]["tarifs"][$tarifNum]["new_payday"]);
-    $tarifData["Title"] = $tarifsJson["tarifs"][$groupNumber]["title"];
-    $tarifData["Period"] = $tarifsJson["tarifs"][$groupNumber]["tarifs"][$tarifNum]["pay_period"];
-    $tarifData["Price"] = $tarifsJson["tarifs"][$groupNumber]["tarifs"][$tarifNum]["price"];
-    $tarifData["Price per month"] = $tarifData["Price"] / $tarifData["Period"];
-    $tarifData["New day"] = date('d.m.o', $timestamp[0]);
-    $data = json_encode($tarifData, JSON_UNESCAPED_UNICODE);
     print_r($data);
   };
 ?>
