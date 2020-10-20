@@ -13,18 +13,18 @@
         <div class="tarif" tabindex="0" v-for="(group, index) in content" @keyup.enter.self="showGroup(index)">
           <div class="tarif-wrapper">
             <div class="tarif__header"  @click="showGroup(index)">
-              <h2 class="tarif__name">Тариф "{{ group["Group title"] }}" </h2>
+              <h2 class="tarif__name">Тариф "{{ group["Group_title"] }}" </h2>
             </div>
             <div class="tarif__info"  @click="showGroup(index)">
-              <p class="tarif__speed" v-bind:class="speedCheck(group['Group title'])"> {{ group["Group speed"] }} </p>
-              <p class="tarif__price"> {{ group["Group price"] }} </p>
-              <p class="tarif__item" v-for="option in group['Group free']"> {{ option }} </p>
+              <p class="tarif__speed" v-bind:class="speedCheck(group['Group_title'])"> {{ group["Group_speed"] }} </p>
+              <p class="tarif__price"> {{ group["Group_price"] }} </p>
+              <p class="tarif__item" v-for="option in group['Group_free']"> {{ option }} </p>
               <svg class="arrow-forward"  width="18" height="32">
                 <polyline points="3,3 15,16 3,29"/>
               </svg>
             </div>
             <div class="tarif__footer">
-              <a class="tarif__link" v-bind:href="group['Group link']" title='Перейти на сайт'>узнать подробнее на сайте www.sknt.ru</a>
+              <a class="tarif__link" v-bind:href="group['Group_link']" title='Перейти на сайт'>узнать подробнее на сайте www.sknt.ru</a>
             </div>
           </div>
         </div>
@@ -42,12 +42,12 @@
           <div class="group-tarif-wrapper">
             <div class="tarif" tabindex="0" @click="showTarif(index)" @keyup.enter="showTarif(groupNum, index)">
               <div class="tarif__header">
-                <h2 class="tarif__name"> {{ getPeriodName(tarif["Tarif period"]) }} </h2>
+                <h2 class="tarif__name"> {{ getPeriodName(tarif["Tarif_period"]) }} </h2>
               </div>
               <div class="tarif__info tarif__info_border-bottom-off">
-                <p class="tarif__price"> {{ tarif["Tarif price"] }} </p>
-                <p class="tarif__item tarif__item_rub">разовый платеж – {{ tarif["Full price"] }} </p>
-                <p v-if="tarif['Tarif discount'] > 0" class="tarif__item tarif__item_rub">скидка – {{ tarif["Tarif discount"] }} </p>
+                <p class="tarif__price"> {{ tarif["Tarif_price"] }} </p>
+                <p class="tarif__item tarif__item_rub">разовый платеж – {{ tarif["Full_price"] }} </p>
+                <p v-if="tarif['Tarif_discount'] > 0" class="tarif__item tarif__item_rub">скидка – {{ tarif["Tarif_discount"] }} </p>
                 <svg class="arrow-forward"  width="18" height="32">
                   <polyline points="3,3 15,16 3,29"/>
                 </svg>
@@ -70,12 +70,12 @@
             <h2 class="tarif__name">Тариф "{{ tarifTitle }}" </h2>
           </div>
           <div class="tarif__info">
-            <p class="tarif__pay-period">Период оплаты – {{ getPeriodName(content["Tarif period"]) }}</p>
-            <p class="tarif__monthly-price"> {{ content["Tarif price"] }} </p>
-            <p class="tarif__item tarif__item_rub">разовый платеж – {{ content["Full price"] }} </p>
-            <p class="tarif__item tarif__item_rub tarif__pay-once">со счета спишется – {{ content["Full price"] }} </p>
+            <p class="tarif__pay-period">Период оплаты – {{ getPeriodName(content["Tarif_period"]) }}</p>
+            <p class="tarif__monthly-price"> {{ content["Tarif_price"] }} </p>
+            <p class="tarif__item tarif__item_rub">разовый платеж – {{ content["Full_price"] }} </p>
+            <p class="tarif__item tarif__item_rub tarif__pay-once">со счета спишется – {{ content["Full_price"] }} </p>
             <p class="tarif__item tarif__item_color_gray">вступит в силу – сегодня</p>
-            <p class="tarif__item tarif__item_color_gray">активно до – {{ getDate(content["New day"]) }}</p>
+            <p class="tarif__item tarif__item_color_gray">активно до – {{ getDate(content["New_day"]) }}</p>
           </div>
           <div class="tarif__footer">
             <button class="tarif__select-btn">Выбрать</button>
@@ -88,4 +88,4 @@
   <script src="axios.min.js"></script>
   <script src="script.js"></script>
 </body>
-</html>
+</html_

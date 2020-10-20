@@ -23,9 +23,13 @@ let mainPage = new Vue({
       if (title.includes('Огонь')) return 'tarif__speed_color-fire';
     },
     getPeriodName(payPeriod) {
-      if (payPeriod == 1) return payPeriod + ' месяц';
-      else if (payPeriod > 1 && payPeriod < 5) return payPeriod + ' месяца';
-      else if (payPeriod > 4 && payPeriod < 21) return payPeriod + ' месяцев';
+      if (payPeriod[payPeriod.length-1] == 1) return payPeriod + ' месяц';
+      else if (payPeriod[payPeriod.length-2] != 1 && 
+               payPeriod[payPeriod.length-1] > 1 &&
+               payPeriod[payPeriod.length-1] < 5) {
+               return payPeriod + ' месяца';
+              }
+      else return payPeriod + ' месяцев';
     },
     showGroup(groupNumber) {
       axios
