@@ -32,23 +32,23 @@ let mainPage = new Vue({
       else return payPeriod + ' месяцев';
     },
     showGroup(groupNumber) {
-      axios
-        .get('functions.php?view=group&group='+groupNumber)
+      fetch('functions.php?view=group&group='+groupNumber)
+        .then(response => response.json())
         .then((response) => {
-          this.content = response.data;
-          this.tarifTitle = this.content[0];
-          this.content.shift();
-          this.groupNum = groupNumber;
-          this.show = 'group';
-        })
+              this.content = response;
+              this.tarifTitle = this.content[0];
+              this.content.shift();
+              this.groupNum = groupNumber;
+              this.show = 'group';
+            });
     },
     showGroups() {
-      axios
-      .get('functions.php?view=groups')
-      .then((response) => {
-        this.content = response.data;
-        this.show = 'groups';
-      })
+      fetch('functions.php?view=groups')
+        .then(response => response.json())
+        .then((response) => {
+          this.content = response;
+          this.show = 'groups';
+        })
     },
     showTarif(tarif){
       groupNum = mainPage.groupNum;
